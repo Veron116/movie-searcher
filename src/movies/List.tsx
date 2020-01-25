@@ -6,7 +6,7 @@ export const ListRenderFunc = () => {
     const [movies, setMovies] = useState<any>([]);
 
     useEffect(() => {
-        fetch('movies.json')
+        fetch('https://devlab.website/v1/movies')
             .then(response => response.json())
             .then(json => {
                 setMovies(

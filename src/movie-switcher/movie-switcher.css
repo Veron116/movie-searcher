@@ -1,0 +1,24 @@
+.switcher__wrap {
+    position: fixed;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+}
+
+.switcher__wrap button {
+    background: none;
+    border: none;
+    color: #79cbb8;
+    outline: none;
+    cursor: pointer;
+    margin: 10px 0;
+    font-size: 20px;
+    width: 80px;
+    height: auto;
+    transition: font-weight 0.3s ease-in-out;
+}
+
+.switcher__wrap button:hover {
+    font-weight: 700;
+}

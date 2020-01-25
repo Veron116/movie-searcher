@@ -1,3 +1,20 @@
 .movies__wrap {
-    margin: 20px 10px;
+    padding: 20px;
+    margin: 16px;
+    border-radius: 16px;
+    border: 1px solid #79cbb8;
+    max-width: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background: #500472;
+    color: #fff;
+    transition: all 0.3s ease-in-out;
+}
+
+.current-card {
+    /* box-shadow: 0px 0px 22px #79cbb8; */
+    background: #fff;
+    color: #500472;
+    transition: all 0.3s ease-in-out;
 }
