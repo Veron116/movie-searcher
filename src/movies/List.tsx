@@ -2,14 +2,15 @@ import React, { useState, useEffect } from 'react';
 import './List.css';
 import { MovieRenderFunc } from './Movie';
 import '../movie-switcher/movie-switcher.css';
+import { IMovie } from './IMovie';
 
 export const ListRenderFunc = () => {
-    const [movies, setMovies] = useState<Array<any>>([]);
+    const [movies, setMovies] = useState<Array<IMovie>>([]);
     const [activeCardId, setActiveCardId] = useState<number>();
 
     function getMovieIndex(id: number) {
         for (let i = 0; i < movies.length; i++) {
-            if (movies[i].props.movie.id === id) {
+            if (movies[i].id === id) {
                 return i;
             }
         }
@@ -22,11 +23,7 @@ export const ListRenderFunc = () => {
                     setActiveCardId(json[0].id);
                 }
 
-                setMovies(
-                    json.map((item: any) => {
-                        return <MovieRenderFunc key={item.id} movie={item} activeCardId={activeCardId} />;
-                    })
-                );
+                setMovies(json);
             });
     }, [activeCardId]);
     const handleClickPrev = () => {
@@ -34,7 +31,7 @@ export const ListRenderFunc = () => {
             let index = getMovieIndex(activeCardId);
             if (index !== undefined && index >= 1) {
                 index--;
-                setActiveCardId(movies[index].props.movie.id);
+                setActiveCardId(movies[index].id);
             }
         }
     };
@@ -43,14 +40,18 @@ export const ListRenderFunc = () => {
             let index = getMovieIndex(activeCardId);
             if (index !== undefined && index < movies.length - 1) {
                 index++;
-                setActiveCardId(movies[index].props.movie.id);
+                setActiveCardId(movies[index].id);
             }
         }
     };
 
     return (
         <div>
-            <div className='list__wrap'>{movies}</div>
+            <div className='list__wrap'>
+                {movies.map((item: any) => {
+                    return <MovieRenderFunc key={item.id} movie={item} activeCardId={activeCardId} />;
+                })}
+            </div>
             <div className='switcher__wrap'>
                 <button onClick={handleClickPrev}>Previous</button>
                 <button onClick={handleClickNext}>Next</button>
