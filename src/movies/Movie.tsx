@@ -3,8 +3,9 @@ import './Movie.css';
 
 export const MovieRenderFunc = (props: any) => {
     const movie = props.movie;
+    const activeCardId = props.activeCardId;
     return (
-        <div className='movies__wrap'>
+        <div className={'movies__wrap' + (movie.id === activeCardId ? ' current-card' : '')}>
             {/* <div>{movie.id}</div> */}
             <h3 className='movies__title'>{movie.title}</h3>
             <p className='movies__description'>{movie.overview}</p>
