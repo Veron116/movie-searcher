@@ -1,46 +1,43 @@
 import React, { useState, useEffect } from 'react';
 import './List.css';
-import { MovieRenderFunc } from './Movie';
+import { MovieCardFunc } from './Movie';
 import '../movie-switcher/movie-switcher.css';
-import { IMovie } from './IMovie';
+import { IMovie } from '../typings/IMovie';
+import { MOVIES_URL } from '../constants';
+import { getMovieIndex } from '../utils';
 
 export const ListRenderFunc = () => {
     const [movies, setMovies] = useState<Array<IMovie>>([]);
     const [activeCardId, setActiveCardId] = useState<number>();
 
-    function getMovieIndex(id: number) {
-        for (let i = 0; i < movies.length; i++) {
-            if (movies[i].id === id) {
-                return i;
-            }
-        }
-    }
     useEffect(() => {
-        fetch('https://devlab.website/v1/movies')
+        fetch(MOVIES_URL)
             .then(response => response.json())
             .then(json => {
-                if (activeCardId === undefined) {
-                    setActiveCardId(json[0].id);
-                }
+                setActiveCardId(json[0].id);
 
                 setMovies(json);
             });
-    }, [activeCardId]);
+    }, []);
     const handleClickPrev = () => {
         if (activeCardId !== undefined) {
-            let index = getMovieIndex(activeCardId);
+            let index = getMovieIndex(activeCardId, movies);
             if (index !== undefined && index >= 1) {
                 index--;
                 setActiveCardId(movies[index].id);
+            } else if (index !== undefined && index === 0) {
+                setActiveCardId(movies[movies.length - 1].id);
             }
         }
     };
     const handleClickNext = () => {
         if (activeCardId !== undefined) {
-            let index = getMovieIndex(activeCardId);
+            let index = getMovieIndex(activeCardId, movies);
             if (index !== undefined && index < movies.length - 1) {
                 index++;
                 setActiveCardId(movies[index].id);
+            } else {
+                setActiveCardId(movies[0].id);
             }
         }
     };
@@ -48,8 +45,8 @@ export const ListRenderFunc = () => {
     return (
         <div>
             <div className='list__wrap'>
-                {movies.map((item: any) => {
-                    return <MovieRenderFunc key={item.id} movie={item} activeCardId={activeCardId} />;
+                {movies.map((item: IMovie) => {
+                    return <MovieCardFunc key={item.id} movie={item} activeCardId={activeCardId} />;
                 })}
             </div>
             <div className='switcher__wrap'>
