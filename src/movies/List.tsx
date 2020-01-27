@@ -43,7 +43,7 @@ export const ListRenderFunc = () => {
     };
 
     return (
-        <div>
+        <div className='container'>
             <div className='list__wrap'>
                 {movies.map((item: IMovie) => {
                     return <MovieCardFunc key={item.id} movie={item} activeCardId={activeCardId} />;
