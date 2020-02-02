@@ -5,13 +5,13 @@ import '../movie-switcher/movie-switcher.css';
 import { IMovie } from '../typings/IMovie';
 import { MOVIES_URL } from '../constants';
 import { getMovieIndex } from '../utils';
+import { addMovies } from '../reduxSetup';
 import { useSelector, useDispatch } from 'react-redux';
-// import {ControlList} from './ControlList';
-import { deleteElement } from '../reduxSetup/';
+import { RootStore } from '../reduxSetup/types';
 
 export const ListRenderFunc = () => {
-    const [movies, setMovies] = useState<Array<IMovie>>([]);
     const [activeCardId, setActiveCardId] = useState<number>();
+    const dispatch = useDispatch();
 
     useEffect(() => {
         fetch(MOVIES_URL)
@@ -19,7 +19,7 @@ export const ListRenderFunc = () => {
             .then(json => {
                 setActiveCardId(json[0].id);
 
-                setMovies(json);
+                dispatch(addMovies(json));
             });
     }, []);
     const handleClickPrev = () => {
@@ -44,6 +44,7 @@ export const ListRenderFunc = () => {
             }
         }
     };
+    const movies = useSelector<RootStore, IMovie[]>(state => state.movies);
 
     return (
         <div className='container'>

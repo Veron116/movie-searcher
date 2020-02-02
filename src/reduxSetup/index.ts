@@ -1,2 +1,2 @@
 export { rootReducer } from './rootReducer';
-export { addElement, deleteElement } from './actions';
+export { addMovies, deleteMovie } from './actions';

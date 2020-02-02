@@ -1,5 +1,7 @@
-type ListElement = { title: string; id: string };
-type RootStore = { list: ListElement[] };
+import { IMovie } from '../typings/IMovie';
+
+// type ListElement = { title: string; id: string };
+type RootStore = { movies: IMovie[] };
 
 type Action<T> = { type: string; payload: T };
 

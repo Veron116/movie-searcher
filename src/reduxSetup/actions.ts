@@ -1,11 +1,12 @@
 import { ADD_ELEMENT, DELETE_ELEMENT } from './actionTypes';
+import { IMovie } from '../typings/IMovie';
 
-export const addElement = (newElement: ListElement) => ({
+export const addMovies = (newElements: IMovie[]) => ({
     type: ADD_ELEMENT,
-    payload: newElement,
+    payload: newElements,
 });
 
-export const deleteElement = (idToDeleteElement: string) => ({
+export const deleteMovie = (idToDeleteElement: string) => ({
     type: DELETE_ELEMENT,
     payload: idToDeleteElement,
 });

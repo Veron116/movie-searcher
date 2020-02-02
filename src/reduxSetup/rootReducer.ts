@@ -1,20 +1,21 @@
 import { ADD_ELEMENT, DELETE_ELEMENT } from './actionTypes';
+import { IMovie } from '../typings/IMovie';
+import { RootStore, RootReducer, Action, ActionsT } from './types';
 
-const initialState: RootStore = { list: [] };
+const initialState: RootStore = { movies: [] };
 
 const actionHandler = new Map<string, RootReducer>([
     [
         ADD_ELEMENT,
-        (state, action: Action<ListElement>) => {
-            const { list } = state;
-            return { list: [...list, action.payload] };
+        (state, action: Action<IMovie[]>) => {
+            return { movies: action.payload };
         },
     ],
     [
         DELETE_ELEMENT,
-        (state: RootStore, action: Action<string>) => {
-            const { list } = state;
-            return { list: list.filter(e => e.id !== action.payload) };
+        (state: RootStore, action: Action<number>) => {
+            const { movies } = state;
+            return { movies: movies.filter(e => e.id !== action.payload) };
         },
     ],
     ['DEFAULT_PLUG', (state: RootStore) => state],
