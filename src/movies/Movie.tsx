@@ -1,5 +1,6 @@
 import React from 'react';
 import './Movie.css';
+import { AddToFavorite } from './AddToFavorite';
 
 export const MovieCardFunc = (props: any) => {
     const movie = props.movie;
@@ -12,6 +13,7 @@ export const MovieCardFunc = (props: any) => {
             <p className='movies__dur'>{movie.duration} minutes</p>
             <div>{movie.vote_count}</div>
             <div>{movie.release_date}</div>
+            <AddToFavorite />
         </div>
     );
 };

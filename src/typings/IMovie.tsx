@@ -1,5 +1,3 @@
-import React from 'react';
-
 export interface IMovie {
     id: number;
     title: string;

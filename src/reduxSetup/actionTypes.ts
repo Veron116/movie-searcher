@@ -1,0 +1,2 @@
+export const ADD_ELEMENT = '@@APP/ROOT/ADD__ELEMENT';
+export const DELETE_ELEMENT = '@@APP/ROOT/DELETE__ELEMENT';

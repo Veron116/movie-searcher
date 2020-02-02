@@ -5,6 +5,9 @@ import '../movie-switcher/movie-switcher.css';
 import { IMovie } from '../typings/IMovie';
 import { MOVIES_URL } from '../constants';
 import { getMovieIndex } from '../utils';
+import { useSelector, useDispatch } from 'react-redux';
+// import {ControlList} from './ControlList';
+import { deleteElement } from '../reduxSetup/';
 
 export const ListRenderFunc = () => {
     const [movies, setMovies] = useState<Array<IMovie>>([]);
