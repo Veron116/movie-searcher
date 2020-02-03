@@ -1,4 +1,4 @@
-import { ADD_ELEMENT, DELETE_ELEMENT } from './actionTypes';
+import { ADD_ELEMENTS, DELETE_ELEMENT } from './actionTypes';
 import { IMovie } from '../typings/IMovie';
 import { RootStore, RootReducer, Action, ActionsT } from './types';
 
@@ -6,7 +6,7 @@ const initialState: RootStore = { movies: [] };
 
 const actionHandler = new Map<string, RootReducer>([
     [
-        ADD_ELEMENT,
+        ADD_ELEMENTS,
         (state, action: Action<IMovie[]>) => {
             return { movies: action.payload };
         },

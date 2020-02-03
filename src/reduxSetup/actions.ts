@@ -1,8 +1,8 @@
-import { ADD_ELEMENT, DELETE_ELEMENT } from './actionTypes';
+import { ADD_ELEMENTS, DELETE_ELEMENT } from './actionTypes';
 import { IMovie } from '../typings/IMovie';
 
 export const addMovies = (newElements: IMovie[]) => ({
-    type: ADD_ELEMENT,
+    type: ADD_ELEMENTS,
     payload: newElements,
 });
 
