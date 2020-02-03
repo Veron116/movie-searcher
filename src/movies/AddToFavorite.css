@@ -5,6 +5,6 @@
     cursor: pointer;
 }
 
-.icon-favorite[data-favorite="isFavorite"] {
+.icon-favorite.isFavorite {
     fill: red;
 }

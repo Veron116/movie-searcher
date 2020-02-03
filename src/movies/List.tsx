@@ -44,6 +44,7 @@ export const ListRenderFunc = () => {
             }
         }
     };
+
     const movies = useSelector<RootStore, IMovie[]>(state => state.movies);
 
     return (

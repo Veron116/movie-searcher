@@ -13,7 +13,7 @@ export const MovieCardFunc = (props: any) => {
             <p className='movies__dur'>{movie.duration} minutes</p>
             <div>{movie.vote_count}</div>
             <div>{movie.release_date}</div>
-            <AddToFavorite />
+            <AddToFavorite movieId={movie.id} />
         </div>
     );
 };
