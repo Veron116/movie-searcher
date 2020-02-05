@@ -19,8 +19,6 @@ export const AddToFavorite = (props: any) => {
 
     return (
         <span onClick={HandleClickFavorite}>
-            <div>{favoriteIds.length}</div>
-            <>{props.movieId}</>
             <FavoriteIcon
                 className={favoriteIds.includes(props.movieId) ? 'icon-favorite isFavorite' : 'icon-favorite'}
             />

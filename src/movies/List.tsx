@@ -18,6 +18,7 @@ export const ListRenderFunc = () => {
             .then(response => response.json())
             .then(json => {
                 setActiveCardId(json[0].id);
+                console.log(json);
 
                 dispatch(addMovies(json));
             });
