@@ -23,14 +23,18 @@ const actionHandler = new Map<string, RootReducer>([
     [
         ADD_TO_FAVORITES,
         (state: RootStore, action: Action<number>) => {
-            state.favoriteIds.push(action.payload);
+            if (!state.favoriteIds.includes(action.payload)) {
+                state.favoriteIds = [...state.favoriteIds, action.payload];
+            }
             return state;
         },
     ],
     [
         REMOVE_FROM_FAVORITES,
         (state: RootStore, action: Action<number>) => {
-            state.favoriteIds = state.favoriteIds.filter(e => e !== action.payload);
+            if (state.favoriteIds.includes(action.payload)) {
+                state.favoriteIds = state.favoriteIds.filter(e => e !== action.payload);
+            }
             return state;
         },
     ],
