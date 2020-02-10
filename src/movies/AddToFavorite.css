@@ -1,0 +1,10 @@
+.icon-favorite {
+    fill: none;
+    stroke: red;
+    color: transparent;
+    cursor: pointer;
+}
+
+.icon-favorite.isFavorite {
+    fill: red;
+}
